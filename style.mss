@@ -9,13 +9,7 @@ Map {
 
 @water: #3838FF;
 
-#ne_110m_land {
-  line-color: #222;
-  line-width: 0;
-  line-join: round;
-  line-cap: round;
-  [zoom<=2] { line-width: 3; }  
-}
+
 
 #ne_10m_land {
   line-color: #222;
@@ -23,7 +17,7 @@ Map {
   line-join: round;
   line-cap: round;
 //  [zoom>4][zoom<=7] { line-width: 3; }  
-  [zoom>2][zoom<=9] { line-width: 2; }  
+//  [zoom>2][zoom<=9] { line-width: 2; }  
 }
 
 #landuse {
@@ -47,8 +41,7 @@ Map {
     polygon-pattern-file: url(water_pattern.jpg);
     comp-op: soft-light;
     image-filters: agg-stack-blur(2,2);
-  }
-  
+  }  
 }
 
 #waterway {  
@@ -97,7 +90,7 @@ Map {
   line-color: #fff;
   line-width:0;
   [class='motorway'] {
-    line-width: 3;
+    line-width: 4;
     [zoom=11] { line-width: 7; }
     [zoom=12] { line-width: 9; }
     [zoom=13] { line-width: 10; }
@@ -123,7 +116,7 @@ Map {
   line-width: 0;
   line-color: #555;
   [class='motorway'] { 
-    line-width: 1;
+    line-width: 2;
     [zoom=11] { line-width: 3; }
     [zoom=12] { line-width: 4; }
     [zoom=13] { line-width: 5; }
@@ -145,9 +138,16 @@ Map {
   }
 }
 
-#admin {
-//  line-width: 1;
-//  line-color: rgba(85,153,255,0.5);
+#admin::case [admin_level=2][maritime=0] {
+  line-width: 3;
+  line-color: white;
+  [zoom>4] { line-width: 4; }
+}
+
+#admin [admin_level=2][maritime=0] {
+  line-width: 1;
+  line-color: #222;
+  [zoom>4] { line-width: 2; }
 }
 
 #country_label_line {
@@ -156,7 +156,7 @@ Map {
 }
 
 #country_label {
-  text-name: [name];
+  text-name: [name_en];
   text-face-name: @labels-2;
   text-size: 20;
   text-halo-fill: white;
