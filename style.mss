@@ -7,6 +7,7 @@ Map {
 @labels-1: 'Sprite Graffiti Shadow';
 @labels-2: 'Sprite Graffiti Regular';
 
+@name: [name_en];
 @water: #3838FF;
 
 
@@ -156,11 +157,13 @@ Map {
 }
 
 #country_label {
-  text-name: [name_en];
+  text-name: @name;
   text-face-name: @labels-2;
   text-size: 20;
   text-halo-fill: white;
   text-halo-radius: 2;
+  [scalerank=1][zoom>=4] {
+    text-size: 24; }
 }
 
 #marine_label {
@@ -177,13 +180,76 @@ Map {
   line-color: rgba(119,255,102,0.5);
 }
 
-#place_label[type='city'][localrank=1][zoom>=9],
+#place_label[type='city'][localrank=1][zoom>=6],
 #place_label[type='city'][zoom>=10] {
-  text-name: [name];
+//  text-name: [name];
+//  text-face-name: @labels-2;
+//  text-size: 20;
+//  text-halo-fill: white;
+//  text-halo-radius: 2;
+}
+
+#place_label[type='city'][localrank<=2] {
+  text-name: @name;
   text-face-name: @labels-2;
-  text-size: 20;
   text-halo-fill: white;
   text-halo-radius: 2;
+  text-halo-rasterizer: fast;
+  text-size: 16;
+  [scalerank<=2] {
+    text-size: 20;
+    text-face-name: @labels-2;
+//    [zoom>=6] { text-orientation: 8; }
+    [zoom>=8]  { text-size: 28; }
+    [zoom>=10]  { text-size: 32; }
+    [zoom>=14]  { text-size: 36; }
+  }
+  [scalerank=3] {
+    [zoom>=8] {
+      text-size: 22;
+      text-orientation: 8;
+      text-face-name: @labels-2;
+    }
+    [zoom>=10]  { text-size: 24; }
+    [zoom>=14]  { text-size: 26; }
+  }
+  [scalerank>=4][zoom>10] {
+    text-size: 20;
+    text-orientation: 6;
+    text-face-name: @labels-2;
+  }
+}
+
+#place_label[type='town'][localrank<=1][zoom>8],
+#place_label[type='town'][localrank<=3][zoom>=11] {
+  text-name: @name;
+  text-face-name: @labels-2;
+  text-halo-fill: white;
+  text-halo-radius: 3;
+  text-halo-rasterizer: fast;
+  text-size: 16;
+  text-wrap-width: 80;
+  text-transform:lowercase;
+  [zoom>=12] { text-size: 20; }
+  [zoom>=13] { text-orientation: 4; }
+  [zoom>=14] { text-size: 24; }
+  }
+
+#place_label[zoom>=11][type!='city'][type!='town'] {
+  text-name: @name;
+  text-face-name: @labels-2;
+  text-halo-fill: white;
+  text-halo-radius: 3;
+  text-halo-rasterizer: fast;
+  text-size: 14;
+  text-line-spacing:-2;
+  text-wrap-width: 50;
+  text-transform:lowercase;
+  [zoom>=14][type='neighbourhood'],
+  [zoom>=14][type='village'] {
+    text-size: 18;
+    text-orientation: 5;
+  }
 }
 
 #water_label {
