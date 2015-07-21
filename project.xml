@@ -4,10 +4,11 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-86.1328,51.0138,3</Parameter>
+  <Parameter name="center">-122.6404,38.4622,7</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">14</Parameter>
   <Parameter name="minzoom">0</Parameter>
+  <Parameter name="name"><![CDATA[Street Art]]></Parameter>
   <Parameter name="source"><![CDATA[mapbox:///mapbox.mapbox-streets-v5,iwsstuart.c4c1988b,iwsstuart.f5b88312]]></Parameter>
 </Parameters>
 
@@ -23,7 +24,95 @@
 
 <Style name="waterway" filter-mode="first">
   <Rule>
-    <LineSymbolizer stroke-width="1" stroke="rgba(136, 102, 68, 0.5)" />
+    <MaxScaleDenominator>2500</MaxScaleDenominator>
+    <Filter>([type] = 'stream')</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <MinScaleDenominator>2500</MinScaleDenominator>
+    <Filter>([type] = 'stream')</Filter>
+    <LineSymbolizer stroke-width="2" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([type] = 'stream')</Filter>
+    <LineSymbolizer stroke-width="1" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'stream')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([type] = 'lake')</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([type] = 'lake')</Filter>
+    <LineSymbolizer stroke-width="2" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'lake')</Filter>
+    <LineSymbolizer stroke-width="1" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([type] = 'lake')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([type] = 'river')</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([type] = 'river')</Filter>
+    <LineSymbolizer stroke-width="2" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'river')</Filter>
+    <LineSymbolizer stroke-width="1" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([type] = 'river')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([type] = 'canal')</Filter>
+    <LineSymbolizer stroke-width="3" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([type] = 'canal')</Filter>
+    <LineSymbolizer stroke-width="2" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'canal')</Filter>
+    <LineSymbolizer stroke-width="1" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([type] = 'canal')</Filter>
+    <LineSymbolizer stroke-width="0.5" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <LineSymbolizer stroke="#000000" stroke-width="0" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
 </Style>
 <Layer name="waterway"
@@ -32,18 +121,24 @@
 
 <Style name="water" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>3000000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="2" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <LineSymbolizer stroke="#000000" stroke-width="1" />
+  </Rule>
+</Style>
+<Style name="water-fill" filter-mode="first" image-filters="agg-stack-blur(2,2)" comp-op="soft-light">
+  <Rule>
     <PolygonPatternSymbolizer file="water_pattern.jpg" />
   </Rule>
+</Style>
+<Style name="water-shadow" filter-mode="first">
   <Rule>
-    <LineSymbolizer stroke="#000000" stroke-width="0" stroke-linejoin="round" stroke-linecap="round" />
-    <PolygonPatternSymbolizer file="water_pattern.jpg" />
+    <PolygonSymbolizer fill="#0077ff" />
   </Rule>
 </Style>
 <Layer name="water"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>water-shadow</StyleName>
+    <StyleName>water-fill</StyleName>
     <StyleName>water</StyleName>  </Layer>
 
 <Style name="aeroway" filter-mode="first">
@@ -218,7 +313,7 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000000</MaxScaleDenominator>
-    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <MinScaleDenominator>1500000</MinScaleDenominator>
     <LineSymbolizer stroke-width="3" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>

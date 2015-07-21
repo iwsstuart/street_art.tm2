@@ -20,7 +20,7 @@ Map {
   line-width: 0;
   line-join: round;
   line-cap: round;
-  [zoom>4][zoom<=7] { line-width: 3; }  
+  [zoom>4][zoom<=8] { line-width: 3; }  
   [zoom>2][zoom<=4] { line-width: 2; }  
 }
 
@@ -29,18 +29,41 @@ Map {
   line-color: rgba(85,153,255,0.5);
 }
 
-#waterway {
-  line-width: 1;
-  line-color: rgba(136,102,68,0.5);
+#water {  
+  ::shadow { polygon-fill: #07f; }
+  ::fill {
+    // a white fill and overlay comp-op lighten the polygon-fill from ::shadow.
+//    polygon-fill: #fff;
+    polygon-pattern-file: url(water_pattern.jpg);
+    comp-op: soft-light;
+    // blurring reveals the polygon fill from ::shadow around the edges of the water
+    image-filters: agg-stack-blur(2,2);
+  }
+  [zoom>8] {
+    line-color: black;  
+    line-width: 1;
+  }
 }
 
-#water {  
+#waterway {  
   line-color: black;
   line-width: 0;
   line-join: round;
   line-cap: round;
-  polygon-pattern-file: url(water_pattern.jpg);
-  [zoom>7][zoom<=11] { line-width: 2; }
+  [type='river'],
+  [type='canal'],
+  [type='lake'] {
+    line-width: 0.5;
+    [zoom>=12] { line-width: 1; }
+    [zoom>=14] { line-width: 2; }
+    [zoom>=16] { line-width: 3; }
+  }
+  [type='stream'] {
+    line-width: 0.5;
+    [zoom>=14] { line-width: 1; }
+    [zoom>=16] { line-width: 2; }
+    [zoom>=18] { line-width: 3; }
+  }
 }
 
 #aeroway {

@@ -9,16 +9,16 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -86.1328
-  - 51.0138
-  - 3
+  - -122.6404
+  - 38.4622
+  - 7
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
 layers: null
 maxzoom: 14
 minzoom: 0
-name: ''
+name: Street Art
 source: "mapbox:///mapbox.mapbox-streets-v5,iwsstuart.c4c1988b,iwsstuart.f5b88312"
 styles: 
   - style.mss
