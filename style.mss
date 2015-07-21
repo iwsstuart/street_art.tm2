@@ -1,8 +1,11 @@
 Map {
   background-color: #dddd00;
   background-image: url(land_pattern.jpg);
-
+  font-directory: url('');
 }
+
+@labels-1: 'Sprite Graffiti Shadow';
+@labels-2: 'Sprite Graffiti Regular';
 
 #ne_110m_land {
   line-color: black;
@@ -87,8 +90,9 @@ Map {
 }
 
 #country_label {
-  line-width: 1;
-  line-color: rgba(102,136,221,0.5);
+  text-name: [name];
+  text-face-name: @labels-1;
+  text-size: 20;
 }
 
 #marine_label {
