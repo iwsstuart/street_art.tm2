@@ -7,8 +7,10 @@ Map {
 @labels-1: 'Sprite Graffiti Shadow';
 @labels-2: 'Sprite Graffiti Regular';
 
+@water: #3838FF;
+
 #ne_110m_land {
-  line-color: black;
+  line-color: #222;
   line-width: 0;
   line-join: round;
   line-cap: round;
@@ -16,12 +18,12 @@ Map {
 }
 
 #ne_10m_land {
-  line-color: black;
+  line-color: #222;
   line-width: 0;
   line-join: round;
   line-cap: round;
-  [zoom>4][zoom<=8] { line-width: 3; }  
-  [zoom>2][zoom<=4] { line-width: 2; }  
+//  [zoom>4][zoom<=7] { line-width: 3; }  
+  [zoom>2][zoom<=9] { line-width: 2; }  
 }
 
 #landuse {
@@ -30,29 +32,32 @@ Map {
 }
 
 #water {  
-  ::shadow { polygon-fill: #07f; }
+  ::line {
+    line-color: @water;
+    line-width: 2;
+    line-join: round;
+    [zoom>9] { line-width: 4; }
+    [zoom>=12] { line-width: 6; }
+    line-comp-op: multiply;
+  }
+  ::shadow { 
+    polygon-fill: #07f; 
+  }
   ::fill {
-    // a white fill and overlay comp-op lighten the polygon-fill from ::shadow.
-//    polygon-fill: #fff;
     polygon-pattern-file: url(water_pattern.jpg);
     comp-op: soft-light;
-    // blurring reveals the polygon fill from ::shadow around the edges of the water
     image-filters: agg-stack-blur(2,2);
   }
-  [zoom>8] {
-    line-color: black;  
-    line-width: 1;
-  }
+  
 }
 
 #waterway {  
-  line-color: black;
+  line-color: @water;
   line-width: 0;
   line-join: round;
   line-cap: round;
   [type='river'],
-  [type='canal'],
-  [type='lake'] {
+  [type='canal'] {
     line-width: 0.5;
     [zoom>=12] { line-width: 1; }
     [zoom>=14] { line-width: 2; }
@@ -86,19 +91,58 @@ Map {
   line-color: rgba(153,187,119,0.5);
 }
 
-#tunnel {
-  line-width: 1;
-  line-color: rgba(102,68,238,0.5);
+#road::case,
+#bridge::case,
+#tunnel::case {
+  line-color: #fff;
+  line-width:0;
+  [class='motorway'] {
+    line-width: 3;
+    [zoom=11] { line-width: 7; }
+    [zoom=12] { line-width: 9; }
+    [zoom=13] { line-width: 10; }
+    [zoom>13] { line-width: 12; }
+  }
+  [class='motorway_link'] { 
+    line-width: 3;
+    [zoom>10] { line-width: 5; }
+    [zoom>12] { line-width: 8; }
+  }
+  [class='main'] { 
+    line-width: 3;
+    [zoom>10] { line-width: 5; }
+    [zoom=13] { line-width: 7; }    
+    [zoom>13] { line-width: 8; }
+  }
+  [zoom>13][class='street'] {
+//    line-width: 4; 
+  }
 }
 
-#road {
-  line-width: 1;
-  line-color: grey;
-}
-
-#bridge {
-  line-width: 1;
-  line-color: rgba(204,153,153,0.5);
+#road, #tunnel, #bridge {
+  line-width: 0;
+  line-color: #555;
+  [class='motorway'] { 
+    line-width: 1;
+    [zoom=11] { line-width: 3; }
+    [zoom=12] { line-width: 4; }
+    [zoom=13] { line-width: 5; }
+    [zoom>13] { line-width: 6; }
+  }
+  [class='motorway_link'] {
+    line-width: 1;
+    [zoom>10] { line-width: 2; }
+    [zoom>12] { line-width: 3; }
+  }
+  [class='main'] { 
+    line-width: 1;    
+    [zoom>10] { line-width: 2; }
+    [zoom=13] { line-width: 3; }    
+    [zoom>13] { line-width: 4; }
+  }
+  [class='street'] { 
+    line-width: 0; 
+  }
 }
 
 #admin {
