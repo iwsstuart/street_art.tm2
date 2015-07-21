@@ -1,150 +1,133 @@
-// Languages: name (local), name_en, name_fr, name_es, name_de
-@name: '[name_en]';
+Map {
+  background-color: #dddd00;
+  background-image: url(land_pattern.jpg);
 
-// Fonts //
-@sans: 'Source Sans Pro Regular';
-@sans_italic: 'Source Sans Pro Italic';
-@sans_bold: 'Source Sans Pro Semibold';
+}
 
-// Common Colors //
-@land: #fff;
-@water: #c3e6ff;
-
-Map { background-color: @land; }
-
-// Political boundaries //
-
-#admin[admin_level=2][maritime=0] {
+#ne_110m_land {
+  line-color: black;
+  line-width: 0;
   line-join: round;
-  line-color: #bbe;
-  line-width: 1.4;
-  [zoom>=6] { line-width: 2; }
-  [zoom>=8] { line-width: 4; }
-  [disputed=1] { line-dasharray: 4,4; }
+  line-cap: round;
+  [zoom<=2] { line-width: 3; }  
 }
 
-// Places //
-
-#country_label[zoom>=3] {
-  text-name: @name;
-  text-face-name: @sans_bold;
-  text-fill: #66a;
-  text-size: 12;
-  [zoom>=3][scalerank=1],
-  [zoom>=4][scalerank=2],
-  [zoom>=5][scalerank=3],
-  [zoom>=6][scalerank>3] {
-    text-size: 14;
-  }
-  [zoom>=4][scalerank=1],
-  [zoom>=5][scalerank=2],
-  [zoom>=6][scalerank=3],
-  [zoom>=7][scalerank>3] {
-    text-size: 16;
-  }
+#ne_10m_land {
+  line-color: black;
+  line-width: 0;
+  line-join: round;
+  line-cap: round;
+  [zoom>4][zoom<=7] { line-width: 3; }  
+  [zoom>2][zoom<=4] { line-width: 2; }  
 }
 
-#place_label[localrank<=2] {
-  [type='city'][zoom<=15] {
-    text-name: @name;
-    text-face-name: @sans_bold;
-    text-fill: #444;
-    text-size: 14;
-    [zoom>=8] { text-size: 16; }
-    [zoom>=10] { text-size: 18; }
-    [zoom>=12] { text-size: 24; }
-  }
-  [type='town'][zoom<=17] {
-    text-name: @name;
-    text-face-name: @sans;
-    text-fill: #333;
-    text-size: 12;
-    [zoom>=8] { text-size: 14; }
-    [zoom>=10] { text-size: 16; }
-    [zoom>=12] { text-size: 20; }
-  }
-  [type='village'] {
-    text-name: @name;
-    text-face-name: @sans;
-    text-fill: #444;
-    text-size: 10;
-    [zoom>=10] { text-size: 12; }
-    [zoom>=12] { text-size: 14; }
-    [zoom>=14] { text-size: 18; }
-  }
-  [type='hamlet'],
-  [type='suburb'],
-  [type='neighbourhood'] {
-    text-name: @name;
-    text-face-name: @sans;
-    text-fill: #666;
-    text-size: 12;
-    [zoom>=14] { text-size: 14; }
-    [zoom>=16] { text-size: 16; }
-  }
-}
-
-// Water Features //
-
-#water {
-  polygon-fill: @water;
-  polygon-gamma: 0.6;
-}
-
-#water_label {
-  [zoom<=13],  // automatic area filtering @ low zooms
-  [zoom>=14][area>500000],
-  [zoom>=16][area>10000],
-  [zoom>=17] {
-    text-name: @name;
-    text-face-name: @sans_italic;
-    text-fill: darken(@water, 30%);
-    text-size: 13;
-    text-wrap-width: 100;
-    text-wrap-before: true;
-  }
+#landuse {
+  line-width: 1;
+  line-color: rgba(85,153,255,0.5);
 }
 
 #waterway {
-  [type='river'],
-  [type='canal'] {
-    line-color: @water;
-    line-width: 0.5;
-    [zoom>=12] { line-width: 1; }
-    [zoom>=14] { line-width: 2; }
-    [zoom>=16] { line-width: 3; }
-  }
-  [type='stream'] {
-    line-color: @water;
-    line-width: 0.5;
-    [zoom>=14] { line-width: 1; }
-    [zoom>=16] { line-width: 2; }
-    [zoom>=18] { line-width: 3; }
-  }
+  line-width: 1;
+  line-color: rgba(136,102,68,0.5);
 }
 
-// Roads & Railways //
+#water {  
+  line-color: black;
+  line-width: 0;
+  line-join: round;
+  line-cap: round;
+  polygon-pattern-file: url(water_pattern.jpg);
+//  { line-width: 3; }
+  [zoom>7][zoom<=9] { line-width: 2; }
+}
 
-#tunnel { opacity: 0.5; }
+#aeroway {
+  line-width: 1;
+  line-color: rgba(221,85,204,0.5);
+}
 
-#road,
-#tunnel,
+#barrier_line {
+  line-width: 1;
+  line-color: rgba(119,170,238,0.5);
+}
+
+#building {
+  line-width: 1;
+  line-color: rgba(204,221,102,0.5);
+}
+
+#landuse_overlay {
+  line-width: 1;
+  line-color: rgba(153,187,119,0.5);
+}
+
+#tunnel {
+  line-width: 1;
+  line-color: rgba(102,68,238,0.5);
+}
+
+#road {
+  line-width: 1;
+  line-color: grey;
+}
+
 #bridge {
-  ['mapnik::geometry_type'=2] {
-    line-color: #cde;
-    line-width: 0.5;
-    [class='motorway'],
-    [class='main'] {
-      [zoom>=10] { line-width: 1; }
-      [zoom>=12] { line-width: 2; }
-      [zoom>=14] { line-width: 3; }
-      [zoom>=16] { line-width: 5; }
-    }
-    [class='street'],
-    [class='street_limited'] {
-      [zoom>=14] { line-width: 1; }
-      [zoom>=16] { line-width: 2; }
-    }
-    [class='street_limited'] { line-dasharray: 4,1; }
-  }
+  line-width: 1;
+  line-color: rgba(204,153,153,0.5);
 }
+
+#admin {
+//  line-width: 1;
+//  line-color: rgba(85,153,255,0.5);
+}
+
+#country_label_line {
+  line-width: 1;
+  line-color: rgba(85,136,204,0.5);
+}
+
+#country_label {
+  line-width: 1;
+  line-color: rgba(102,136,221,0.5);
+}
+
+#marine_label {
+  line-width: 1;
+  line-color: rgba(255,221,187,0.5);
+}
+
+#state_label {
+  line-width: 1;
+  line-color: rgba(119,255,102,0.5);
+}
+
+#place_label {
+  line-width: 1;
+  line-color: rgba(136,68,238,0.5);
+}
+
+#water_label {
+  line-width: 1;
+  line-color: rgba(136,68,170,0.5);
+}
+
+#poi_label {
+  line-width: 1;
+  line-color: rgba(85,255,221,0.5);
+}
+
+#road_label {
+  line-width: 1;
+  line-color: rgba(136,170,255,0.5);
+}
+
+#waterway_label {
+  line-width: 1;
+  line-color: rgba(68,204,170,0.5);
+}
+
+#housenum_label {
+  line-width: 1;
+  line-color: rgba(102,238,102,0.5);
+}
+
