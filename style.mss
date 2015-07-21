@@ -40,8 +40,7 @@ Map {
   line-join: round;
   line-cap: round;
   polygon-pattern-file: url(water_pattern.jpg);
-//  { line-width: 3; }
-  [zoom>7][zoom<=9] { line-width: 2; }
+  [zoom>7][zoom<=11] { line-width: 2; }
 }
 
 #aeroway {
@@ -91,13 +90,19 @@ Map {
 
 #country_label {
   text-name: [name];
-  text-face-name: @labels-1;
+  text-face-name: @labels-2;
   text-size: 20;
+  text-halo-fill: white;
+  text-halo-radius: 2;
 }
 
 #marine_label {
-  line-width: 1;
-  line-color: rgba(255,221,187,0.5);
+  text-name: [name];
+  text-face-name: @labels-2;
+  text-size: 20;
+  text-fill: white;
+  text-halo-fill: black;
+  text-halo-radius: 2;
 }
 
 #state_label {
@@ -105,9 +110,13 @@ Map {
   line-color: rgba(119,255,102,0.5);
 }
 
-#place_label {
-  line-width: 1;
-  line-color: rgba(136,68,238,0.5);
+#place_label[type='city'][localrank=1][zoom>=9],
+#place_label[type='city'][zoom>=10] {
+  text-name: [name];
+  text-face-name: @labels-2;
+  text-size: 20;
+  text-halo-fill: white;
+  text-halo-radius: 2;
 }
 
 #water_label {

@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-117.0703,43.0689,3</Parameter>
+  <Parameter name="center">-86.1328,51.0138,3</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">14</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -33,7 +33,7 @@
 <Style name="water" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
     <LineSymbolizer stroke-width="2" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" />
     <PolygonPatternSymbolizer file="water_pattern.jpg" />
   </Rule>
@@ -124,7 +124,7 @@
 
 <Style name="country_label" filter-mode="first">
   <Rule>
-    <TextSymbolizer face-name="Sprite Graffiti Shadow" size="20" ><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer face-name="Sprite Graffiti Regular" size="20" halo-fill="#ffffff" halo-radius="2" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="country_label"
@@ -133,7 +133,7 @@
 
 <Style name="marine_label" filter-mode="first">
   <Rule>
-    <LineSymbolizer stroke-width="1" stroke="rgba(255, 221, 187, 0.5)" />
+    <TextSymbolizer face-name="Sprite Graffiti Regular" size="20" fill="#ffffff" halo-fill="#000000" halo-radius="2" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="marine_label"
@@ -151,7 +151,14 @@
 
 <Style name="place_label" filter-mode="first">
   <Rule>
-    <LineSymbolizer stroke-width="1" stroke="rgba(136, 68, 238, 0.5)" />
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] = 1)</Filter>
+    <TextSymbolizer face-name="Sprite Graffiti Regular" size="20" halo-fill="#ffffff" halo-radius="2" ><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([type] = 'city')</Filter>
+    <TextSymbolizer face-name="Sprite Graffiti Regular" size="20" halo-fill="#ffffff" halo-radius="2" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="place_label"
