@@ -78,7 +78,9 @@ Map {
 
 #building {
   line-width: 0;
-  polygon-fill: #333;
+  polygon-fill: #678971;
+  polygon-opacity: 0.4;
+//  comp-op: minus;
 }
 
 #landuse_overlay {
@@ -133,7 +135,7 @@ Map {
 
 #road, #tunnel, #bridge {
   line-width: 0;
-  line-color: #555;
+  line-color: #333;
   [class='motorway'] { 
     line-width: 2;
     [zoom=11] { line-width: 3; }
@@ -153,7 +155,10 @@ Map {
     [zoom>13] { line-width: 4; }
   }
   [class='street'] { 
-    line-width: 0; 
+    line-width: 0;
+    line-color: #fff;
+    [zoom=12] { line-width: 0.5; }
+    [zoom>=13] { line-width: 1; }
   }
 }
 
@@ -165,7 +170,7 @@ Map {
 
 #admin [admin_level=2][maritime=0] {
   line-width: 1;
-  line-color: #222;
+  line-color: #111;
   [zoom>4] { line-width: 2; }
 }
 
@@ -212,6 +217,7 @@ Map {
   text-halo-rasterizer: fast;
   text-size: 18;
   text-margin: 10;
+  [zoom>=13] { text-halo-radius: 3; }
   [localrank=1] { text-face-name: @labels-3; }
   [localrank=2] { text-orientation: 6; }
   [scalerank<=1] {
@@ -249,8 +255,9 @@ Map {
   text-halo-rasterizer: fast;
   text-size: 16;
   text-wrap-width: 80;
-  text-margin: 10;
+  text-margin: 20;
   [zoom>=12] { text-size: 20; }
+  [zoom>=13] { text-halo-radius: 3; }
   [zoom>=14] { text-size: 24; }
 }
 
@@ -264,6 +271,7 @@ Map {
   text-line-spacing:-2;
   text-wrap-width: 50;
   text-margin: 10;
+//  [zoom>=13] { text-halo-radius: 3; }
   [zoom>=14][type='neighbourhood'],
   [zoom>=14][type='village'] {
     text-size: 18;
