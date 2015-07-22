@@ -4,7 +4,7 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-122.4976,37.5881,6</Parameter>
+  <Parameter name="center">-59.7656,-0.4394,4</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">16</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -49,46 +49,46 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([type] = 'river')</Filter>
+    <Filter>([type] = 'canal')</Filter>
     <LineSymbolizer stroke-width="3" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([type] = 'river')</Filter>
+    <Filter>([type] = 'canal')</Filter>
     <LineSymbolizer stroke-width="2" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'river')</Filter>
+    <Filter>([type] = 'canal')</Filter>
     <LineSymbolizer stroke-width="1" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([type] = 'river')</Filter>
+    <Filter>([type] = 'canal')</Filter>
     <LineSymbolizer stroke-width="0.5" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([type] = 'canal')</Filter>
+    <Filter>([type] = 'river')</Filter>
     <LineSymbolizer stroke-width="3" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([type] = 'canal')</Filter>
+    <Filter>([type] = 'river')</Filter>
     <LineSymbolizer stroke-width="2" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'canal')</Filter>
+    <Filter>([type] = 'river')</Filter>
     <LineSymbolizer stroke-width="1" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
     <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([type] = 'canal')</Filter>
+    <Filter>([type] = 'river')</Filter>
     <LineSymbolizer stroke-width="0.5" stroke="#3838ff" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
   <Rule>
@@ -672,21 +672,31 @@
 <Style name="country_label" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
-    <Filter>([scalerank] = 1)</Filter>
-    <TextSymbolizer size="24" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="15" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <Filter>([scalerank] &gt; 3)</Filter>
+    <TextSymbolizer size="16" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MinScaleDenominator>50000000</MinScaleDenominator>
-    <Filter>([scalerank] = 1)</Filter>
-    <TextSymbolizer size="20" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="15" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <Filter>([scalerank] &gt; 3)</Filter>
+    <TextSymbolizer face-name="Shortcut Regular" size="16" halo-fill="#ffffff" halo-radius="2" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000000</MaxScaleDenominator>
-    <TextSymbolizer size="22" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="15" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="24" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MinScaleDenominator>50000000</MinScaleDenominator>
-    <TextSymbolizer face-name="Shortcut Regular" size="16" halo-fill="#ffffff" halo-radius="2" margin="15" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <Filter>([scalerank] = 1)</Filter>
+    <TextSymbolizer size="20" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <TextSymbolizer size="20" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <TextSymbolizer face-name="Shortcut Regular" size="16" halo-fill="#ffffff" halo-radius="2" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="country_label"
@@ -718,24 +728,24 @@
 <Style name="place_label" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([type] = 'village')</Filter>
+    <Filter>([type] = 'neighbourhood')</Filter>
     <TextSymbolizer size="18" orientation="5" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" line-spacing="-2" wrap-width="50" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'village')</Filter>
+    <Filter>([type] = 'neighbourhood')</Filter>
     <TextSymbolizer face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" size="16" line-spacing="-2" wrap-width="50" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([type] = 'neighbourhood')</Filter>
+    <Filter>([type] = 'village')</Filter>
     <TextSymbolizer size="18" orientation="5" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" line-spacing="-2" wrap-width="50" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'neighbourhood')</Filter>
+    <Filter>([type] = 'village')</Filter>
     <TextSymbolizer face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" size="16" line-spacing="-2" wrap-width="50" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
@@ -790,56 +800,146 @@
     <TextSymbolizer size="24" face-name="Sprite Graffiti Regular" orientation="6" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt;= 4)</Filter>
+    <TextSymbolizer size="18" face-name="Sprite Graffiti Regular" orientation="6" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt;= 4)</Filter>
     <TextSymbolizer size="16" face-name="Sprite Graffiti Regular" orientation="6" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([type] = 'city') and ([scalerank] &gt; 1) and ([localrank] = 2)</Filter>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 2)</Filter>
     <TextSymbolizer size="28" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'city') and ([scalerank] &gt; 1) and ([localrank] = 2)</Filter>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 2)</Filter>
     <TextSymbolizer size="24" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([type] = 'city') and ([scalerank] &gt; 1) and ([localrank] = 2)</Filter>
-    <TextSymbolizer size="16" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 2)</Filter>
+    <TextSymbolizer size="18" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 2)</Filter>
+    <TextSymbolizer size="14" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([type] = 'city') and ([scalerank] &gt; 1) and ([localrank] = 1)</Filter>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 1)</Filter>
     <TextSymbolizer size="28" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'city') and ([scalerank] &gt; 1) and ([localrank] = 1)</Filter>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 1)</Filter>
     <TextSymbolizer size="24" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([type] = 'city') and ([scalerank] &gt; 1) and ([localrank] = 1)</Filter>
-    <TextSymbolizer size="16" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 1)</Filter>
+    <TextSymbolizer size="18" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] &gt;= 3) and ([localrank] = 1)</Filter>
+    <TextSymbolizer size="14" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt; 1)</Filter>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt;= 3)</Filter>
     <TextSymbolizer size="28" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt; 1)</Filter>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt;= 3)</Filter>
     <TextSymbolizer size="24" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt; 1)</Filter>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt;= 3)</Filter>
+    <TextSymbolizer size="18" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &gt;= 3)</Filter>
+    <TextSymbolizer size="14" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 2)</Filter>
+    <TextSymbolizer size="36" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 2)</Filter>
+    <TextSymbolizer size="30" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 2)</Filter>
+    <TextSymbolizer size="24" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 2)</Filter>
+    <TextSymbolizer size="16" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 1)</Filter>
+    <TextSymbolizer size="36" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 1)</Filter>
+    <TextSymbolizer size="30" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 1)</Filter>
+    <TextSymbolizer size="24" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([scalerank] = 2) and ([localrank] = 1)</Filter>
+    <TextSymbolizer size="16" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] = 2)</Filter>
+    <TextSymbolizer size="36" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] = 2)</Filter>
+    <TextSymbolizer size="30" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] = 2)</Filter>
+    <TextSymbolizer size="24" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] = 2)</Filter>
     <TextSymbolizer size="16" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
@@ -862,7 +962,7 @@
   <Rule>
     <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([type] = 'city') and ([scalerank] &lt;= 1) and ([localrank] = 2)</Filter>
-    <TextSymbolizer size="20" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="18" orientation="6" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
@@ -884,7 +984,7 @@
   <Rule>
     <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([type] = 'city') and ([scalerank] &lt;= 1) and ([localrank] = 1)</Filter>
-    <TextSymbolizer size="20" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="18" face-name="Shortcut Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
@@ -906,7 +1006,7 @@
   <Rule>
     <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([type] = 'city') and ([localrank] &lt;= 2) and ([scalerank] &lt;= 1)</Filter>
-    <TextSymbolizer size="20" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="18" face-name="Sprite Graffiti Regular" halo-fill="#ffffff" halo-radius="2" halo-rasterizer="fast" margin="10" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
