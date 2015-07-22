@@ -77,8 +77,8 @@ Map {
 }
 
 #building {
-  line-width: 1;
-  line-color: rgba(204,221,102,0.5);
+  line-width: 0;
+  polygon-fill: #333;
 }
 
 #landuse_overlay {
@@ -86,10 +86,22 @@ Map {
   line-color: rgba(153,187,119,0.5);
 }
 
-#landuse [class='park'][zoom>=6] { 
-  polygon-pattern-file: url(landuse1_small.jpg); 
+#landuse [zoom>=6] { 
+  [class='park'] { 
+    polygon-pattern-file: url(landuse1_small.jpg); }
+  [class='agriculture'] { 
+    polygon-pattern-file: url(landuse2_adjust.jpg);     
+    polygon-pattern-opacity: 0.5;
+  }
   comp-op: minus;
 } 
+
+#landcover [zoom>=4] {   
+  [class='wood'] { 
+    polygon-pattern-file: url(landuse1_small.jpg);
+  }
+  comp-op: minus;
+}
 
 #road::case,
 #bridge::case,

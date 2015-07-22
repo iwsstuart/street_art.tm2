@@ -4,16 +4,21 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-59.7656,-0.4394,4</Parameter>
+  <Parameter name="center">-119.8059,36.4831,7</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">16</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[Street Art]]></Parameter>
-  <Parameter name="source"><![CDATA[mapbox:///mapbox.mapbox-streets-v5,iwsstuart.c4c1988b,iwsstuart.f5b88312]]></Parameter>
+  <Parameter name="source"><![CDATA[mapbox:///mapbox.mapbox-streets-v5,mapbox.mapbox-terrain-v2,iwsstuart.c4c1988b,iwsstuart.f5b88312]]></Parameter>
 </Parameters>
 
 
 <Style name="landuse" filter-mode="first" comp-op="minus">
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <Filter>([class] = 'agriculture')</Filter>
+    <PolygonPatternSymbolizer file="landuse2_adjust.jpg" opacity="0.5" />
+  </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
     <Filter>([class] = 'park')</Filter>
@@ -150,7 +155,8 @@
 
 <Style name="building" filter-mode="first">
   <Rule>
-    <LineSymbolizer stroke-width="1" stroke="rgba(204, 221, 102, 0.5)" />
+    <LineSymbolizer stroke-width="0" />
+    <PolygonSymbolizer fill="#333333" />
   </Rule>
 </Style>
 <Layer name="building"
@@ -1074,6 +1080,25 @@
 <Layer name="housenum_label"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>housenum_label</StyleName>  </Layer>
+
+<Style name="landcover" filter-mode="first" comp-op="minus">
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <Filter>([class] = 'wood')</Filter>
+    <PolygonPatternSymbolizer file="landuse1_small.jpg" />
+  </Rule>
+</Style>
+<Layer name="landcover"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>landcover</StyleName>  </Layer>
+
+<Layer name="hillshade"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
+
+<Layer name="contour"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+      </Layer>
 
 <Style name="ne_10m_land" filter-mode="first">
   <Rule>
