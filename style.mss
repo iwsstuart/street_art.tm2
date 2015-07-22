@@ -22,8 +22,8 @@ Map {
 }
 
 #landuse {
-  line-width: 1;
-  line-color: rgba(85,153,255,0.5);
+//  line-width: 1;
+//  line-color: rgba(85,153,255,0.5);
 }
 
 #water {  
@@ -85,6 +85,11 @@ Map {
   line-color: rgba(153,187,119,0.5);
 }
 
+#landuse [class='park'][zoom>=6] { 
+  polygon-pattern-file: url(landuse1_small.jpg); 
+  comp-op: minus;
+} 
+
 #road::case,
 #bridge::case,
 #tunnel::case {
@@ -103,7 +108,7 @@ Map {
     [zoom>12] { line-width: 8; }
   }
   [class='main'] { 
-    line-width: 3;
+    line-width: 2;
     [zoom>10] { line-width: 5; }
     [zoom=13] { line-width: 7; }    
     [zoom>13] { line-width: 8; }
