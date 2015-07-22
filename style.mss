@@ -6,6 +6,7 @@ Map {
 
 @labels-1: 'Sprite Graffiti Shadow';
 @labels-2: 'Sprite Graffiti Regular';
+@labels-3: 'Shortcut Regular';
 
 @name: [name_en];
 @water: #3838FF;
@@ -163,21 +164,26 @@ Map {
 
 #country_label {
   text-name: @name;
-  text-face-name: @labels-2;
-  text-size: 20;
+  text-face-name: @labels-3;
+  text-size: 16;
   text-halo-fill: white;
   text-halo-radius: 2;
-  [scalerank=1][zoom>=4] {
-    text-size: 24; }
+  text-margin: 15;
+  [scalerank=1] { text-size: 20; }
+  [zoom>=4] {
+    text-size: 22;
+    [scalerank=1] { text-size: 24; }
+  }
 }
 
 #marine_label {
   text-name: [name];
-  text-face-name: @labels-2;
-  text-size: 20;
+  text-face-name: @labels-3;
+  text-size: 14;
   text-fill: white;
   text-halo-fill: black;
-  text-halo-radius: 2;
+  text-halo-radius: 1;
+  [labelrank=1] { text-size: 20; }
 }
 
 #state_label {
@@ -200,28 +206,25 @@ Map {
   text-halo-fill: white;
   text-halo-radius: 2;
   text-halo-rasterizer: fast;
-  text-size: 16;
-  [scalerank<=2] {
+  text-size: 18;
+  text-margin: 10;
+  [localrank=1] { text-face-name: @labels-3; }
+  [localrank=2] { text-orientation: 6; }
+  [scalerank<=1] {
     text-size: 20;
-    text-face-name: @labels-2;
-//    [zoom>=6] { text-orientation: 8; }
-    [zoom>=8]  { text-size: 28; }
-    [zoom>=10]  { text-size: 32; }
+    [zoom>=8]  { text-size: 24; }
+    [zoom>=10]  { text-size: 30; }
     [zoom>=14]  { text-size: 36; }
   }
-  [scalerank=3] {
-    [zoom>=8] {
-      text-size: 22;
-      text-orientation: 8;
-      text-face-name: @labels-2;
-    }
+  [scalerank>1] {
+    text-size: 16;
     [zoom>=10]  { text-size: 24; }
-    [zoom>=14]  { text-size: 26; }
+    [zoom>=14]  { text-size: 28; }
   }
-  [scalerank>=4][zoom>10] {
-    text-size: 20;
-    text-orientation: 6;
+  [scalerank>=4] {
+    text-size: 16;
     text-face-name: @labels-2;
+    text-orientation: 6;
   }
 }
 
@@ -229,27 +232,27 @@ Map {
 #place_label[type='town'][localrank<=3][zoom>=11] {
   text-name: @name;
   text-face-name: @labels-2;
+  text-orientation: -4;
   text-halo-fill: white;
-  text-halo-radius: 3;
+  text-halo-radius: 2;
   text-halo-rasterizer: fast;
   text-size: 16;
   text-wrap-width: 80;
-  text-transform:lowercase;
+  text-margin: 10;
   [zoom>=12] { text-size: 20; }
-  [zoom>=13] { text-orientation: 4; }
   [zoom>=14] { text-size: 24; }
-  }
+}
 
 #place_label[zoom>=11][type!='city'][type!='town'] {
   text-name: @name;
   text-face-name: @labels-2;
   text-halo-fill: white;
-  text-halo-radius: 3;
+  text-halo-radius: 2;
   text-halo-rasterizer: fast;
-  text-size: 14;
+  text-size: 16;
   text-line-spacing:-2;
   text-wrap-width: 50;
-  text-transform:lowercase;
+  text-margin: 10;
   [zoom>=14][type='neighbourhood'],
   [zoom>=14][type='village'] {
     text-size: 18;
