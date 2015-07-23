@@ -1,3 +1,3 @@
-mapbox-studio-default-style
+street_art
 ===========================
-Default style used by new style projects in Mapbox Studio.
+Mapbox Studio style inspired by the street art aesthetic.
