@@ -67,20 +67,19 @@ Map {
 }
 
 #aeroway {
-  line-width: 1;
+  line-width: 0;
   line-color: rgba(221,85,204,0.5);
 }
 
 #barrier_line {
-  line-width: 1;
+  line-width: 0;
   line-color: rgba(119,170,238,0.5);
 }
 
 #building {
   line-width: 0;
-  polygon-fill: #678971;
-  polygon-opacity: 0.4;
-//  comp-op: minus;
+  polygon-fill: #7C645B;
+//  polygon-opacity: 0.8;
 }
 
 #landuse_overlay {
@@ -271,7 +270,7 @@ Map {
   text-line-spacing:-2;
   text-wrap-width: 50;
   text-margin: 10;
-//  [zoom>=13] { text-halo-radius: 3; }
+  [zoom>=13] { text-halo-radius: 3; }
   [zoom>=14][type='neighbourhood'],
   [zoom>=14][type='village'] {
     text-size: 18;
@@ -280,22 +279,65 @@ Map {
 }
 
 #water_label {
-  line-width: 1;
-  line-color: rgba(136,68,170,0.5);
+  // --- dots ---------
+  marker-width: 8;
+  marker-fill: black;
+  marker-line-color: white;
+  marker-line-width: 3;
+  // --- text ---------
+  text-name: @name;
+  text-face-name: @labels-3;
+  text-size: 14;
+  text-halo-fill: white;
+  text-halo-radius: 2;
+  text-halo-rasterizer: fast;
+  text-wrap-width: 80;
+  text-placement-type: simple;
+  text-line-spacing: -8;
+  text-placements: NE,SE,NW,SW;
+  text-dx: 5;
+  text-dx: -5;
 }
 
-#poi_label {
-  line-width: 1;
-  line-color: rgba(85,255,221,0.5);
+// --- pois ------------------------------------
+#poi_label[scalerank=1][zoom>=14],
+#poi_label[scalerank=2][zoom>=16],
+#poi_label[scalerank=3][zoom>=17] {
+  [type='Aerodrome']{
+    text-name: "'[ ' + [ref] + ' ]'";
+    text-face-name: @labels-2;
+    text-size: 20;
+    text-transform:uppercase;
+  }
+  // --- dots ---------
+  marker-width: 8;
+  marker-fill: black;
+  marker-line-color: white;
+  marker-line-width: 3;
+  // --- text ---------
+  text-name: @name;
+  text-face-name: @labels-3;
+  text-size: 14;
+  text-halo-fill: white;
+  text-halo-radius: 3;
+  text-halo-rasterizer: fast;
+  text-avoid-edges: true;
+  text-transform: lowercase;
+  text-wrap-width: 80;
+  text-placement-type: simple;
+  text-line-spacing: -8;
+  text-placements: NE,SE,NW,SW;
+  text-dx: 5;
+  text-dx: -5;
 }
 
 #road_label {
-  line-width: 1;
+  line-width: 0;
   line-color: rgba(136,170,255,0.5);
 }
 
 #waterway_label {
-  line-width: 1;
+  line-width: 0;
   line-color: rgba(68,204,170,0.5);
 }
 
